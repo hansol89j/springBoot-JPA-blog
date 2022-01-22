@@ -24,13 +24,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity //User 클래스가 MYSQL에 테이블이 생성된다.
-@DynamicInsert //insert시 null인 필드를 제외시켜준다.
+//@DynamicInsert //insert시 null인 필드를 제외시켜준다.
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable=false,length=30)
+	@Column(nullable=false,length=30, unique=true)
 	private String username;
 	
 	@Column(nullable=false,length=100)
@@ -39,6 +39,7 @@ public class User {
 	@Column(nullable=false,length=50)
 	private String email;
 	
+	//@ColumnDefault("user")
 	@Enumerated(EnumType.STRING)
 	private RoleType role;	
 	

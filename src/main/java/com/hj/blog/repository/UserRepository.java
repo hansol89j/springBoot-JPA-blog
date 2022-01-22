@@ -6,4 +6,5 @@ import com.hj.blog.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+
 }
