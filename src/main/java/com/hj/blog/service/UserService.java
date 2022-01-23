@@ -20,6 +20,11 @@ public class UserService {
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Userservice: memberJoin()" + e.getMessage());
-		}
+		} 
+	}
+	
+	@Transactional(readOnly=true)
+	public User login(User user) {
+		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 	}
 }
