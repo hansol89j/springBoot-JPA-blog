@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8001
   servlet:
     context-path: /
     encoding:
@@ -33,3 +33,9 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+      
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

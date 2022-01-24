@@ -18,14 +18,14 @@ let index = {
 			
 			$.ajax({
 				type:"POST",
-				url:"/api/user/signin",
+				url:"/auth/joinProc",
 				data:JSON.stringify(data),
 				contentType:"application/json; charset=utf-8",
 				dataType: "json"
 			}).done(function(resp){
 				alert("회원가입이 완료되었습니다.");
 				location.href="/";
-			}).fail(function(){
+			}).fail(function(error){
 				alert(JSON.stringify(error));
 			});
 	},

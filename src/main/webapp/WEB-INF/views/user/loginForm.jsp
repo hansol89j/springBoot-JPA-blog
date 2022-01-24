@@ -15,8 +15,14 @@
 			<input type="password" name="password" class="form-control" placeholder="Enter password" id="password">
 		</div>
 		
-		<button id="btn-login" class="btn btn-primary">로그인</button>
+		<div class="form-group form-check">
+		    <label class="form-check-label">
+		      <input name="remember" class="form-check-input" type="checkbox"> Remember me
+			</label>
+		</div>
+		
 	</form>
+	<button id="btn-login" class="btn btn-primary">로그인</button>
 </div>
 
 <script src="/js/user/user.js"></script>
