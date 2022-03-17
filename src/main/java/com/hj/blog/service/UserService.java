@@ -20,15 +20,10 @@ public class UserService {
 	
 	@Transactional
 	public void memberJoin(User user) {
-		String rawPassword = user.getPassword();
-		String encPassword = encoder.encode(rawPassword);
+		String rawPassword = user.getPassword(); //1234 원문
+		String encPassword = encoder.encode(rawPassword); // 해쉬
 		user.setPassword(encPassword);
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
-	}
-	
-	@Transactional(readOnly=true)
-	public User login(User user) {
-		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 	}
 }

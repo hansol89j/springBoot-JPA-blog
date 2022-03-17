@@ -3,10 +3,7 @@ let index = {
 		$("#btn-save").on("click",() => {
 			this.save();
 		});
-		
-		$("#btn-login").on("click",() => {
-			this.login();
-		});
+	
 	},
 	
 	save : function(){
@@ -18,7 +15,7 @@ let index = {
 			
 			$.ajax({
 				type:"POST",
-				url:"/auth/joinProc",
+				url: "/auth/joinProc",
 				data:JSON.stringify(data),
 				contentType:"application/json; charset=utf-8",
 				dataType: "json"
@@ -29,25 +26,6 @@ let index = {
 				alert(JSON.stringify(error));
 			});
 	},
-	login : function(){
-			let data = {
-				username : $("#username").val(),
-				password : $("#password").val(),
-			};
-						
-			$.ajax({
-				type:"POST",
-				url:"/api/user/login",
-				data:JSON.stringify(data),
-				contentType:"application/json; charset=utf-8",
-				dataType: "json"
-			}).done(function(resp){
-				alert("로그인 되었습니다.");
-				location.href="/";
-			}).fail(function(){
-				alert(JSON.stringify(error));
-			});
-	}
 }
 
 index.init();
