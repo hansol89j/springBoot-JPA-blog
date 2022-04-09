@@ -39,3 +39,7 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+   
+   
+hj: 
+  key: hj1234

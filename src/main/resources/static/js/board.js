@@ -54,7 +54,7 @@ let index = {
 		};
 		
 		$.ajax({
-			type: 'POST',
+			type: 'PUT',
 			url: '/api/board/'+id,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
