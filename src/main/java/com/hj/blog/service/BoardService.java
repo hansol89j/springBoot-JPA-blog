@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hj.blog.model.Board;
+import com.hj.blog.model.Reply;
 import com.hj.blog.model.User;
 import com.hj.blog.repository.BoardRepository;
+import com.hj.blog.repository.ReplyRepository;
 
 @Service
 public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 	
 	@Transactional
 	public void writeBoard(Board board, User user) {
@@ -49,4 +54,19 @@ public class BoardService {
 		board.setTitle(requestBoard.getTitle());
 		board.setContent(requestBoard.getContent());
 	}
+	
+	@Transactional
+	public void writeComment(User user, int boardId, Reply requestReply) {
+
+		Board board = boardRepository.findById(boardId).orElseThrow(()->{
+			return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 id를 찾을 수 없습니다.");
+		}); // 영속화 완료;
+
+		requestReply.setUser(user);
+		requestReply.setBoard(board);
+
+		replyRepository.save(requestReply);
+	}
+	
+	
 }
